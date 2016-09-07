@@ -1,0 +1,83 @@
+<script src='firewall.js'></script>
+恶意模块拦截测试
+<br>
+<a href="javascript:alert(/xss/)">Click Me</a>
+<br><br><br>
+恶意事件拦截测试
+<br>
+<img src='https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.jpg' onmouseover='javascript:alert(/xss/)'></img>
+<br><br><br>
+静态脚本拦截测试
+<br>
+<script src='http://www.baidu.com/abc.js'>
+<br><br><br>
+动态脚本拦截测试1
+<br>
+<button id="btn1">创建脚本</button>
+	<script>
+		btn1.onclick = function() {
+			var el = document.createElement('script');
+			el.id='abc';
+			el.src = 'http://www.baidu.com/xss/out.js?dynamic';
+			document.body.appendChild(el);
+			document.getElementById('abc').innerHTML='alert(1)';
+		};
+	</script>
+<br><br><br>
+动态脚本拦截测试2
+<br>
+<button id="btn2">创建脚本</button>
+	<script>
+		btn2.onclick = function() {
+			var script1 = document.createElement('script');
+			script1.setAttribute('src', 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.js');
+			document.getElementsByTagName('body')[0].appendChild(script1);
+		};
+		
+	</script>
+<br><br><br>
+
+动态脚本拦截测试3
+<br>
+<button id="btn3">创建脚本</button>
+	<script>
+		btn3.onclick = function() {
+			document.write('<scri'+'pt src="http://www.jb51.net/adc.js" ></s'+'cript>');
+		};
+		
+	</script>
+<br><br><br>
+
+动态脚本拦截测试4
+<br>
+<button id="btn4">创建脚本</button>
+	<script>
+	btn4.onclick = function() {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', 'http://www.baidu.com/');
+		xhr.send();
+		};
+	</script>
+<br><br><br>
+动态脚本拦截测试5
+<br>
+<button id="btn5">创建脚本</button>
+	<script>
+	btn5.onclick = function() {
+		var ws = new WebSocket('ws://www.baidu.com/');
+		};
+	</script>
+<br><br><br>
+动态脚本拦截测试6
+<br>
+<button id="btn6">创建脚本</button>
+	<script>
+	btn6.onclick = function() {
+		postMessage('hello', '*');
+	window.addEventListener('message', function(e) 
+	{
+		console.log('收到:' + e.data);
+	});
+		};
+	</script>
+<br><br><br>
