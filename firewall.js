@@ -2,7 +2,7 @@
 // 记录内联事件是否被扫描过的 hash map
 mCheckMap = {},
 // 记录内联事件是否被扫描过的id
-mCheckID = 0;
+mCheckID = 0; 
 
 // 建立白名单,可以自定义自己的正则
 var whiteList = [
